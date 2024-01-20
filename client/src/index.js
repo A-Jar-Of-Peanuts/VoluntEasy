@@ -4,12 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { UserContextProvider } from './UserContext';
+import Login from './pages/Login'
+import Events from './pages/Events'
+import Profile from './pages/Profile'
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter basename={"/"}>
-    <App />
+    <Routes>
+      <Route path='/' element={<Login />} />
+      <Route path='/events' element={<Events />} />
+      <Route path='/profile' element={<Profile />} />
+    </Routes>
   </BrowserRouter>
   
 );

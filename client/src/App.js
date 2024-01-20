@@ -1,13 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, redirect } from "react-router-dom";
 import { UserContextProvider } from './UserContext';
+import Login from './pages/Login'
+import Events from './pages/Events'
+import Profile from './pages/Profile'
+
 
 
 function App() {
   return (
     <UserContextProvider>
-      <p>hi there</p>
+      {/* <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/events' element={<Events />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes> */}
     </UserContextProvider>
     // <div className="App">
     //     <p>hi</p>
