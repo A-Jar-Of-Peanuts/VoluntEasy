@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
+import { UserContextProvider } from './UserContext';
 
 
 function App() {
   return (
+    <UserContextProvider>
+      <p>hi there</p>
+    </UserContextProvider>
     // <div className="App">
     //     <p>hi</p>
     //   <header className="App-header">
@@ -22,7 +26,6 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <p>hi</p>
   );
 }
 
