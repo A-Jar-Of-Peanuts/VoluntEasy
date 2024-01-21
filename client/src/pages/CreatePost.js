@@ -125,8 +125,8 @@ export default function CreatePost() {
 
 
             
-        </div>
             <button>Create Event!</button>
+        </div>
       </form>
     )
 }
