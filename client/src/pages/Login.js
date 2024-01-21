@@ -1,42 +1,93 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Navigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [inputOne, setInputOne] = useState('');
-  const [inputTwo, setInputTwo] = useState('');
+  const [loginUsername, setLoginUsername] = useState('');
+  const [registerUsername, setRegisterUsername] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const { setUserInfo } = useContext(UserContext);
+  
+  const navigate = useNavigate();
+  async function login(event) {
+    event.preventDefault();
+    const response = await fetch('http://localhost:4000/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: loginUsername, password: loginPassword }),
+      headers: { 'Content-Type': 'application/json'},
+      credentials: 'include',
+    })
 
-  const handleInputOneChange = (event) => {
-    setInputOne(event.target.value);
-  };
+    if(response.ok) {
+      response.json().then(userInfo => {
+        setUserInfo(userInfo);
+        navigate('/events')
+      })
+    } else {
+      alert("Your username or password is incorrect");
+    }
+  }
 
-  const handleInputTwoChange = (event) => {
-    setInputTwo(event.target.value);
-  };
-
-  const handleFirstButtonClick = () => {
-  };
-
-  const handleSecondButtonClick = () => {
-  };
+  async function register(event) {
+    event.preventDefault();
+    const response = await fetch('http://localhost:4000/register', {
+      method: 'POST',
+      body: JSON.stringify({ username: registerUsername, password: registerPassword }),
+      headers: {'Content-Type': 'application/json'},
+    });
+    
+    if(response.status === 200)
+      alert("Registration successful.");
+    else 
+      alert("Registration failed.");
+  }
+  
 
   return (
     <div>
-      <h2>User Input Page</h2>
+    <form className = 'login' onSubmit={ login }>
       <div>
-        <label>
-          Input One:
-          <input type="text" value={inputOne} onChange={handleInputOneChange} />
-        </label>
+        <h2>Login</h2>
+        <div>
+          <label>
+            Username:
+            <input type="text" value={loginUsername} onChange={event => setLoginUsername(event.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Password:
+            <input type="password" value={loginPassword} onChange={event => setLoginPassword(event.target.value)} />
+          </label>
+        </div>
+        <div>
+          <button>Login</button>
+        </div>
       </div>
+    </form>
+
+    <form className = 'register' onSubmit={ register }>
       <div>
-        <label>
-          Input Two:
-          <input type="text" value={inputTwo} onChange={handleInputTwoChange} />
-        </label>
+        <h2>Register</h2>
+        <div>
+          <label>
+            Username:
+            <input type="text" value={registerUsername} onChange={event => setRegisterUsername(event.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Password:
+            <input type="password" value={registerPassword} onChange={event => setRegisterPassword(event.target.value)} />
+          </label>
+        </div>
+        <div>
+          <button>Register</button>
+        </div>
       </div>
-      <div>
-        <button onClick={handleFirstButtonClick}>First Button</button>
-        <button onClick={handleSecondButtonClick}>Second Button</button>
-      </div>
+    </form>
     </div>
   );
 }
