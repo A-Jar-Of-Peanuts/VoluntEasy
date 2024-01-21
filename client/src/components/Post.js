@@ -1,8 +1,9 @@
 import {formatISO9075} from "date-fns";
 import "./PostCSS.css"
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import {Link} from "react-router-dom"
 
-export default function Post({title, location, description, eventTime, lat, lng}) {
+export default function Post({_id, title, location, description, eventTime, lat, lng}) {
 
     const libraries = ['places'];
 
@@ -41,7 +42,9 @@ export default function Post({title, location, description, eventTime, lat, lng}
             </div>
             <hr className="seperator"></hr>
             <div>
-                <h2>{title}</h2>
+                <Link to={`/post/${_id}`}>
+                  <h2>{title}</h2>
+                </Link>
                 <p>LOCATION: {location}</p>
                 <p>DATE & TIME <time>{eventTime ? formatISO9075(new Date(eventTime.replace(' ', 'T'))) : 'No time provided'}</time> </p>            </div>
             <p className="description"> {description}</p>
