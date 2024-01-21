@@ -14,7 +14,7 @@ function Events() {
  return (
     <div className = "top">
       <div className = "header">
-          <h2>VOLUNTEERING EVENTS</h2>
+          <h2 id='volEvents'>VOLUNTEERING EVENTS</h2>
       </div>
       
       <NavigationBar/>
