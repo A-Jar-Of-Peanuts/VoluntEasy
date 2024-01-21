@@ -42,7 +42,7 @@ export default function Post({_id, title, location, description, eventTime, lat,
             </div>
             <hr className="seperator"></hr>
             <div>
-                <Link to={`/post/${_id}`}>
+                <Link to={`/post/${_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <h2>{title}</h2>
                 </Link>
                 <p>LOCATION: {location}</p>
