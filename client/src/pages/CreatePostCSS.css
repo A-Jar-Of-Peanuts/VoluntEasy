@@ -7,10 +7,39 @@
 
 .entry {
     padding: 20px;
-    border: solid;
+    border: 5px solid;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
     gap:7px;
+    
+}
+
+#volunteerPosting {
+    background-color: #96e5e7;
+    transform: skewX(-15deg);
+    filter: drop-shadow(20px 12px 0px black);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#BETHECHANGE {
+    background-color: #96e5e7;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+#createEventButton {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+#createEventButton:hover {
+    cursor: pointer;
+    background-color: lightgray;
 }

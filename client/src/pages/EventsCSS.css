@@ -24,4 +24,6 @@ body {
     background-color: #96e5e7;
     transform: skewX(-15deg);
     filter: drop-shadow(20px 12px 0px black);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

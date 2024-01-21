@@ -71,8 +71,8 @@ export default function CreatePost() {
             <div>
                 <NavigationBar/>
             </div>
-            <h2>Create Volunteering Posting</h2>
-            <p>Be the change you want to see in your community!</p>
+            <h2 id="volunteerPosting">Create Volunteering Posting</h2>
+            <p id="BETHECHANGE">Be the change you want to see in your community!</p>
 
             <div className="entry">
             <div>
@@ -145,7 +145,7 @@ export default function CreatePost() {
 
 
             
-            <button>Create Event!</button>
+            <button id="createEventButton">Create Event!</button>
             </div>
 
         </div>
