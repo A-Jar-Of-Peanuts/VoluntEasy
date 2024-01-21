@@ -19,3 +19,9 @@ body {
     padding-top:20px;
     padding-bottom: 20px;
 }
+
+#volEvents {
+    background-color: #96e5e7;
+    transform: skewX(-15deg);
+    filter: drop-shadow(20px 12px 0px black);
+}

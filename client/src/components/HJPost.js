@@ -1,8 +1,12 @@
 import {formatISO9075} from "date-fns";
 import "./PostCSS.css"
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import {Link} from "react-router-dom"
+import {useEffect, useState} from 'react'
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 
-export default function HJPost({title, location, description, eventTime, lat, lng}) {
+export default function HJPost({_id, title, location, description, eventTime, lat, lng}) {
 
     const libraries = ['places'];
 
@@ -10,15 +14,27 @@ export default function HJPost({title, location, description, eventTime, lat, ln
         width: '42.7vw',
         height: '50vh'
     };
-    const center = {
+    const [center, setCenter] = useState({
         lat: Number(lat), // default latitude
         lng: Number(lng), // default longitude
-    };
+    });
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyAKM57OWoyZpf4reHYd8bVDdY9yj6Nwlm8',
         libraries,
       });
+
+      useEffect(() => {
+        (async () => {
+          const sleep = n => new Promise(resolve => setTimeout(resolve, n));
+          while (!window.google) {
+            await sleep(1000)
+          }
+          geocodeByAddress(location)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) => setCenter({lat, lng}));
+        })()
+      }, []);
     
       if (loadError) {
         return <div>Error loading maps</div>;
@@ -39,11 +55,13 @@ export default function HJPost({title, location, description, eventTime, lat, ln
                     <Marker position={center} />
                 </GoogleMap>
             </div>
+            <hr className="seperator"></hr>
             <div>
-                <h2>{title}</h2>
+                <Link to={`/post/${_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <h2>{title}</h2>
+                </Link>
                 <p>LOCATION: {location}</p>
-                <p>DATE & TIME <time>{formatISO9075(eventTime)}</time> </p>
-            </div>
+                <p>DATE & TIME <time>{eventTime ? formatISO9075(new Date(eventTime.replace(' ', 'T'))) : 'No time provided'}</time> </p>            </div>
             <p className="description"> {description}</p>
         </div>
     )

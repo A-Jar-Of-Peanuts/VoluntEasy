@@ -66,7 +66,7 @@ export default function Post({_id, title, location, description, eventTime, lat,
       
     return (
         <div className="Post">
-             <div>
+             <div className='map'>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     zoom={8}
