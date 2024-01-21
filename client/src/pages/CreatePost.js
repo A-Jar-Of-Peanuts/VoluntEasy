@@ -4,7 +4,7 @@ import "./CreatePostCSS.css";
 import Select from 'react-select';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
     const [title, setTitle] = useState("");
@@ -18,17 +18,42 @@ export default function CreatePost() {
     const [hour, setHour] = useState(0);
     const [minute, setMinute] = useState(0);
     const [second, setSecond] = useState(0);
+    const navigate = useNavigate();
 
-    const handleCreatePost = () => {
+    async function createPost(ev) {
+        ev.preventDefault();
         var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
-        geocodeByAddress(location.label)
-            .then(results => getLatLng(results[0]))
-            .then(({ lat, lng }) =>
-                setLatLng({lat,lng})
-            )
-    }
+         geocodeByAddress(location.label)
+             .then(results => getLatLng(results[0]))
+             .then(({ lat, lng }) => setLatLng({lat,lng}))
+
+        const data = {
+          title: title,
+          location: location.label,
+          description: description,
+          time: concat,
+          lat: latlng[0],
+          lng: latlng[1],        
+        }
+
+      
+        const response = await fetch('http://localhost:4000/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data),
+          credentials: 'include',
+        })
+
+        if(response.ok) {
+          navigate('/events/');
+          alert("post successful!")
+        } 
+    }  
 
     return (
+      <form onSubmit={createPost}>
         <div className='CreatePost'>
             <div>
                 <NavigationBar/>
@@ -89,18 +114,19 @@ export default function CreatePost() {
             <div>
                 <label>Location:</label>
                 <GooglePlacesAutocomplete
-      apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" 
-      selectProps={{
-        location,
-        onChange: setLocation,
-      }}
-    />
+                apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" 
+                selectProps={{
+                  location,
+                  onChange: setLocation,
+                }}
+                 />
 
             </div>
 
 
             
-            <button onClick={(event) => {handleCreatePost(event.target.value)}}>Create Event!</button>
         </div>
+            <button>Create Event!</button>
+      </form>
     )
 }
