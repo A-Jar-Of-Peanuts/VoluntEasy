@@ -21,13 +21,14 @@ export default function CreatePost() {
     const navigate = useNavigate();
 
     async function createPost(ev) {
+        var data;
         ev.preventDefault();
         var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
          geocodeByAddress(location.label)
              .then(results => getLatLng(results[0]))
              .then(({ lat, lng }) => setLatLng({lat,lng}))
-
-        const data = {
+             .then(
+        data = {
           title: title,
           location: location.label,
           description: description,
@@ -35,6 +36,9 @@ export default function CreatePost() {
           lat: latlng[0],
           lng: latlng[1],        
         }
+
+
+      )
 
       
         const response = await fetch('http://localhost:4000/post', {
