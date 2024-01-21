@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { useNavigate } from 'react-router-dom';
+import NavigationBar from '../components/NavigationBar';
+import "./LoginCSS.css"; 
 
 function Login() {
   const [loginUsername, setLoginUsername] = useState('');
@@ -46,7 +48,9 @@ function Login() {
   
 
   return (
-    <div>
+    <div className='top'>
+      <div> <NavigationBar/> </div>
+    <div className='loginAndRegister'>
     <form className = 'login' onSubmit={ login }>
       <div>
         <h2>Login</h2>
@@ -63,7 +67,7 @@ function Login() {
           </label>
         </div>
         <div>
-          <button>Login</button>
+          <button className='loginRegistrationButtons'>Login</button>
         </div>
       </div>
     </form>
@@ -84,10 +88,11 @@ function Login() {
           </label>
         </div>
         <div>
-          <button>Register</button>
+          <button className='loginRegistrationButtons'>Register</button>
         </div>
       </div>
     </form>
+    </div>
     </div>
   );
 }

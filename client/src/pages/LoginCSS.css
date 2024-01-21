@@ -1,0 +1,38 @@
+.loginRegistrationButtons {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.loginRegistrationButtons:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.top {
+    padding: 80px;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.login {
+    border: 5px solid;
+    padding: 10px;
+    border-radius: 20px;    
+}
+
+.register {
+    border: 5px solid;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.loginAndRegister {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
