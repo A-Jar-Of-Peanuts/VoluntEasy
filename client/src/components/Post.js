@@ -7,9 +7,8 @@ export default function Post({title, location, description, eventTime, lat, lng}
     const libraries = ['places'];
 
     const mapContainerStyle = {
-        align: 'center',
-        width: '48vw',
-        height: '50vh',
+        width: '42.7vw',
+        height: '50vh'
     };
     const center = {
         lat: Number(lat), // default latitude
@@ -35,7 +34,7 @@ export default function Post({title, location, description, eventTime, lat, lng}
              <div>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
-                    zoom={10}
+                    zoom={8}
                     center={center}>
                     <Marker position={center} />
                 </GoogleMap>
