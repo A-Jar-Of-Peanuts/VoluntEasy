@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 
 
 const User = require('./models/User');
+const Post = require('./models/Post');
 const app = express();
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000"}));
@@ -57,6 +58,37 @@ app.post('/login', async (req, res) => {
   }
 })
 
+// Creating a new post 
+app.post('/post', async (req, res) => {
+  const {token} = req.cookies;
+  jwt.verify(token, secret, {}, async(error, info) => {
+    if(error) throw error;
+    const {title, location, description, time, lat, lng} = req.body;
+    const postDocument = await Post.create({
+      title,
+      location,
+      description,
+      time,
+      lat,
+      lng,
+      author: info.id,
+    })
+    res.json(postDocument);
+  })
+});
+
+app.get('/post', async(req, res) => {
+  res.json(await Post.find()
+  .populate('author', ['username'])
+  .sort({createdAt:-1})
+  .limt(20));
+})
+
+app.get('/post/:id', async(req,res) => {
+  const {id} = req.params;
+  const postDocument = await Post.findById(id).populate('author', ['username']);
+  res.json(postDocument);
+})
 
 
 
