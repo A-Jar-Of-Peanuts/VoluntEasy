@@ -72,7 +72,7 @@ export default function CreatePost() {
                 <NavigationBar/>
             </div>
             <h2 id="volunteerPosting">Create Volunteering Posting</h2>
-            <p id="BETHECHANGE">Be the change you want to see in your community!</p>
+            <h4 id="BETHECHANGE">Be the change you want to see in your community!</h4>
 
             <div className="entry">
             <div>
