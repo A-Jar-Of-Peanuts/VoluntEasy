@@ -1,8 +1,19 @@
 import './Profile.css';
 import NavigationBar from '../components/NavigationBar'
 import HJPost from "../components/HJPost"
+import Post from '../components/Post'
+import { useState, useEffect } from 'react';
+
 
 function Profile() {
+    const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:4000/post').then(response => {
+      response.json().then(posts => {
+        setPosts(posts);
+      })
+    })
+  }, []);
 
     return (
         
@@ -15,16 +26,20 @@ function Profile() {
             <div className = "HJ">
                 <div className = "posts">
                     <h2>Hosted Events:</h2>
-                    <div className = "post">
-                        <HJPost title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-                    </div>
+                    {posts.length > 0 && posts.map(post => (
+                        <div className = "post">
+                        <HJPost {...post} />
+                        </div>
+                    ))}       
                 </div>
 
                 <div className = "posts">
                     <h2>Joined Events:</h2>
-                    <div className = "post">
-                        <HJPost title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-                    </div>
+                        {posts.length > 0 && posts.map(post => (
+                            <div className = "post">
+                            <HJPost {...post} />
+                            </div>
+                        ))}       
                 </div>
             </div>
             
