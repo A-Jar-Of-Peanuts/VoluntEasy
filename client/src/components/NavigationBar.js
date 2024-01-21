@@ -1,5 +1,6 @@
 import "./NavigationBarCSS.css"
 import { useNavigate } from "react-router-dom";
+import logo from "../pages/volunteasy.png"
 
 export default function NavigationBar() {
     const navigate = useNavigate();
@@ -18,18 +19,23 @@ export default function NavigationBar() {
 
     return (
         <div className="NavigationBar">
+            <img src={logo} width="50" 
+            height="50"/>
             <div classname = "ic">
                 <h1>VOLUNTEASY</h1>
             </div>
-            <div  classname = "ic">
-                <button onClick={h}>Events</button>
+            <div className="navButtonGroup">
+                <div  classname = "ic">
+                <button className="navBarButton" onClick={h}>Events</button>
             </div>
             <div  classname = "ic">
-                <button onClick={p}>My Profile</button>
+                <button className="navBarButton" onClick={p}>My Profile</button>
             </div>
             <div  classname = "ic">
-                <button onClick={e}>Host Event</button>
+                <button className="navBarButton" onClick={e}>Host Event</button>
             </div>
+            </div>
+            
         </div>
     ) 
 }
