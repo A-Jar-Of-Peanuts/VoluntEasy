@@ -21,15 +21,18 @@ export default function NavigationBar() {
             <div classname = "ic">
                 <h1>VOLUNTEASY</h1>
             </div>
-            <div  classname = "ic">
-                <button onClick={h}>Events</button>
+            <div className="navButtonGroup">
+                <div  classname = "ic">
+                <button className="navBarButton" onClick={h}>Events</button>
             </div>
             <div  classname = "ic">
-                <button onClick={p}>My Profile</button>
+                <button className="navBarButton" onClick={p}>My Profile</button>
             </div>
             <div  classname = "ic">
-                <button onClick={e}>Host Event</button>
+                <button className="navBarButton" onClick={e}>Host Event</button>
             </div>
+            </div>
+            
         </div>
     ) 
 }
