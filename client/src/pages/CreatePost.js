@@ -88,6 +88,7 @@ export default function CreatePost() {
             </div>
             <div>
                 <label>Description:</label>
+                <br></br>
                 <textarea 
                     type="text"
                     placeholder='Describe your altruistic vision'
