@@ -39,12 +39,13 @@ export default function Post({title, location, description, eventTime, lat, lng}
                     <Marker position={center} />
                 </GoogleMap>
             </div>
+            <hr className="seperator"></hr>
             <div>
                 <h2>{title}</h2>
                 <p>LOCATION: {location}</p>
                 <p>DATE & TIME <time>{eventTime ? formatISO9075(new Date(eventTime.replace(' ', 'T'))) : 'No time provided'}</time> </p>            </div>
             <p className="description"> {description}</p>
-            <button >JOIN EVENT</button>
+            <button className="postButton">JOIN EVENT</button>
         </div>
     )
 }

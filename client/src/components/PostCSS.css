@@ -1,5 +1,28 @@
 .Post {
     border: 5px, solid;
     background-color: #D5F0C1;
+    border-radius: 20px;
+}
+
+.postButton {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.postButton:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.seperator {
+    height: 3px;
+    border-style: none;
+    background-color: black;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: 2px;
 }
 
