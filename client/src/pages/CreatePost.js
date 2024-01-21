@@ -7,7 +7,7 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 export default function CreatePost() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState(null);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
 
@@ -83,7 +83,11 @@ export default function CreatePost() {
             <div>
                 <label>Location:</label>
                 <GooglePlacesAutocomplete
-      apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" onChange={(event)=>{setLocation(event.target.value)}}
+      apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" 
+      selectProps={{
+        location,
+        onChange: setLocation,
+      }}
     />
 
             </div>
