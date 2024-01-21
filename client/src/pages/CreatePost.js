@@ -26,10 +26,6 @@ export default function CreatePost() {
         var response;
         ev.preventDefault();
         var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
-         geocodeByAddress(location.label)
-             .then(results => getLatLng(results[0]))
-             .then(({ lat, lng }) => setLatLng({lat,lng}))
-             .then(
         data = {
           title: title,
           location: location.label,
@@ -37,16 +33,15 @@ export default function CreatePost() {
           time: concat,
           lat: latlng[0],
           lng: latlng[1],        
-        })
-              .then(response = await fetch('http://localhost:4000/post', {
+        }
+         response = await fetch('http://localhost:4000/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(data),
           credentials: 'include',
-        })
-)
+        });
 
       
         
