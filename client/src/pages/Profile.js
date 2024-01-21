@@ -1,9 +1,13 @@
 import './Profile.css';
-
+import NavigationBar from '../components/NavigationBar'
 function Profile() {
 
     return (
+        
         <div className='background'>
+            <div>
+            <NavigationBar/>
+        </div>
             <h1>ELAINE CHEN</h1>
             <h2>Hosted Events:</h2>
             womp
