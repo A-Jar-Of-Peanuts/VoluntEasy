@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Events from './pages/Events'
 import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
+import PostPage from './pages/PostPage'
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ root.render(
         <Route path='/events' element={<Events />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/host' element={<CreatePost />} />
+        <Route path='/post/:id' element={<PostPage />} />
       </Routes>
     </BrowserRouter>
   </UserContextProvider>
