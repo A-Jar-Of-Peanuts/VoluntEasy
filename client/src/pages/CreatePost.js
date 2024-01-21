@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import "./CreatePostCSS.css";
 import Select from 'react-select';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
 export default function CreatePost() {
     const [title, setTitle] = useState("");
@@ -19,6 +20,7 @@ export default function CreatePost() {
     const [minute, setMinute] = useState(0);
     const [second, setSecond] = useState(0);
     const navigate = useNavigate();
+    const {userInfo} = useContext(UserContext);
 
 
     async function createPost(ev) {
@@ -46,8 +48,23 @@ export default function CreatePost() {
       
         
         if(response.ok) {
-          navigate('/events/');
-          alert("post successful!")
+          const responseBody = await response.json();
+          const updateData = {
+            user_id: responseBody.author,
+            post_id: responseBody._id, 
+          }
+          var user = await fetch('http://localhost:4000/update', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updateData),
+            credentials: 'include',
+          })
+          if(user.ok) {
+            navigate('/events/');
+            alert("post successful!")
+          }
         } 
     }  
 

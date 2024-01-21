@@ -25,10 +25,15 @@ export default function Post({_id, title, location, description, eventTime, lat,
       });
 
       useEffect(() => {
-        geocodeByAddress(location)
-        .then(results => getLatLng(results[0]))
-        .then(({ lat, lng }) => setCenter({lat, lng}));
-
+        (async () => {
+          const sleep = n => new Promise(resolve => setTimeout(resolve, n));
+          while (!window.google) {
+            await sleep(1000)
+          }
+          geocodeByAddress(location)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) => setCenter({lat, lng}));
+        })()
       }, []);
     
       if (loadError) {
