@@ -20,8 +20,10 @@ export default function CreatePost() {
     const [second, setSecond] = useState(0);
     const navigate = useNavigate();
 
+
     async function createPost(ev) {
         var data;
+        var response;
         ev.preventDefault();
         var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
          geocodeByAddress(location.label)
@@ -35,13 +37,8 @@ export default function CreatePost() {
           time: concat,
           lat: latlng[0],
           lng: latlng[1],        
-        }
-
-
-      )
-
-      
-        const response = await fetch('http://localhost:4000/post', {
+        })
+              .then(response = await fetch('http://localhost:4000/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -49,7 +46,10 @@ export default function CreatePost() {
           body: JSON.stringify(data),
           credentials: 'include',
         })
+)
 
+      
+        
         if(response.ok) {
           navigate('/events/');
           alert("post successful!")
