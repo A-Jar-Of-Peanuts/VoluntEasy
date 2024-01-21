@@ -81,7 +81,7 @@ app.get('/post', async(req, res) => {
   res.json(await Post.find()
   .populate('author', ['username'])
   .sort({createdAt:-1})
-  .limt(20));
+  .limit(20));
 })
 
 app.get('/post/:id', async(req,res) => {
