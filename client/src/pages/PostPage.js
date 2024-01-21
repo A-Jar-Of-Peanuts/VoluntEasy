@@ -1,11 +1,15 @@
-
+import { UserContext } from "../UserContext"
+import { useState, useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function PostPage() {
   const{id} = useParams();
+  console.log(id);
+  console.log("test")
   const [postInfo, setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   useEffect(() => {
-    fetch('http://localhost:4000/post' + id).then(response => {
+    fetch('http://localhost:4000/post/' + id).then(response => {
       response.json().then(postInfo => {
         setPostInfo(postInfo);
       })
