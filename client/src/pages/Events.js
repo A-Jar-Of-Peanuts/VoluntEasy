@@ -26,32 +26,6 @@ function Events() {
       ))}
     </div>
     </div>
-    
-    //<div className = "top">
-    //    <div className = "header">
-    //        <h2>VOLUNTEERING EVENTS</h2>
-    //    </div>
-    //    <div>
-    //        <NavigationBar/>
-    //    </div>
-    //    <div className = "posts">
-    //        <div className = "post">
-    //            <Post title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-    //        </div>
-    //        <div className = "post">
-    //            <Post title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-    //        </div>
-    //        <div className = "post">
-    //            <Post title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-    //        </div>
-    //        <div className = "post">
-    //            <Post title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-    //        </div>
-    //        <div className = "post">
-    //            <Post title = "NWHacks" location = "UR MOM" description = "DOING YOUR MOM" eventTime='2024-01-20 03:01:50' lng = "49.2606" lat = "49.2606"/>
-    //        </div>
-    //    </div>
-    //</div>
  );
 }
 export default Events;

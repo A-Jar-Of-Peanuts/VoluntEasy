@@ -92,8 +92,6 @@ app.get('/post/:id', async(req,res) => {
 
 app.put('/update-created', async(req,res) => {
   const {user_id, post_id} = req.body;
-  console.log(user_id);
-  console.log(post_id);
   const user = await User.findById(user_id)
   await user.updateOne({
     username: user.username,
@@ -104,6 +102,19 @@ app.put('/update-created', async(req,res) => {
   res.json(user);
 })
 
-
+  
+app.put('/update-subscribed', async(req,res) => {
+  const {user_id, post_id} = req.body;
+  console.log(user_id);
+  console.log(post_id);
+  const user = await User.findById(user_id);
+  await user.updateOne({
+    username: user.username,
+    password: user.password,
+    eventsCreated: user.eventsCreated,
+    eventsSubscribed: user.eventsSubscribed.push(post_id),
+  });
+  res.json(user);
+})
 
 app.listen(4000);
