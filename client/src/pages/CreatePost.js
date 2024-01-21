@@ -44,16 +44,13 @@ export default function CreatePost() {
           body: JSON.stringify(data),
           credentials: 'include',
         });
-
-      
-        
         if(response.ok) {
           const responseBody = await response.json();
           const updateData = {
             user_id: responseBody.author,
             post_id: responseBody._id, 
           }
-          var user = await fetch('http://localhost:4000/update', {
+          var user = await fetch('http://localhost:4000/update-created', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'

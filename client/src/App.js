@@ -5,17 +5,24 @@ import { UserContextProvider } from './UserContext';
 import Login from './pages/Login'
 import Events from './pages/Events'
 import Profile from './pages/Profile'
+import CreatePost from './pages/CreatePost'
+import PostPage from './pages/PostPage'
+
+
 
 
 
 function App() {
   return (
     <UserContextProvider>
-      {/* <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/events' element={<Events />} />
-        <Route path='/profile' element={<Profile />} />
-      </Routes> */}
+      <Routes>
+        <Route path='/' element={<Login />}>
+          <Route path='/events' element={<Events />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/host' element={<CreatePost />} />
+          <Route path='/post/:id' element={<PostPage />} />
+        </Route>
+      </Routes>
     </UserContextProvider>
     // <div className="App">
     //     <p>hi</p>
