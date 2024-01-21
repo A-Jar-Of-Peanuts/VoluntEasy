@@ -90,6 +90,20 @@ app.get('/post/:id', async(req,res) => {
   res.json(postDocument);
 })
 
+app.put('/update-created', async(req,res) => {
+  const {user_id, post_id} = req.body;
+  console.log(user_id);
+  console.log(post_id);
+  const user = await User.findById(user_id)
+  await user.updateOne({
+    username: user.username,
+    password: user.password,
+    eventsCreated: user.eventsCreated.push(post_id),
+    eventsSubscribed: user.eventsSubscribed,
+  });
+  res.json(user);
+})
+
 
 
 app.listen(4000);
