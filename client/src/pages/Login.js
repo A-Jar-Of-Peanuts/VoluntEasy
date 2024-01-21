@@ -4,6 +4,7 @@ import { UserContext } from "../UserContext";
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from '../components/NavigationBar';
 import "./LoginCSS.css"; 
+import logo from './volunteasy.png';
 
 function Login() {
   const [loginUsername, setLoginUsername] = useState('');
@@ -49,6 +50,14 @@ function Login() {
 
   return (
     <div className='top'>
+      <div className="logo">
+      <img src={logo} width="100" 
+     height="100"/>
+        <div className = "name">
+        <h2>VOLUNTEASY</h2>
+        <p>BE THE CHANGE</p>
+        </div>
+      </div>
     <div className='loginAndRegister'>
     <form className = 'login' onSubmit={ login }>
       <div>

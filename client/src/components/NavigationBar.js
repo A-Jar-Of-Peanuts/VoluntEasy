@@ -1,5 +1,6 @@
 import "./NavigationBarCSS.css"
 import { useNavigate } from "react-router-dom";
+import logo from "../pages/volunteasy.png"
 
 export default function NavigationBar() {
     const navigate = useNavigate();
@@ -18,6 +19,8 @@ export default function NavigationBar() {
 
     return (
         <div className="NavigationBar">
+            <img src={logo} width="50" 
+            height="50"/>
             <div classname = "ic">
                 <h1>VOLUNTEASY</h1>
             </div>
