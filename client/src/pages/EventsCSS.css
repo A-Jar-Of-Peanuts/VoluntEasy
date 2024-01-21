@@ -7,10 +7,13 @@
 
 .posts {
     border: 5px solid;
-    padding: 10px;
-    overflow-y:scroll;
+    padding: 50px;
 }
 
 body {
     background-color: #80BCBD;
+}
+.post {
+    padding-top:20px;
+    padding-bottom: 20px;
 }

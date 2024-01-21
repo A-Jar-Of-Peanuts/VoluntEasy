@@ -1,9 +1,12 @@
-
+.ic {
+    padding: 5px;
+}
 .NavigationBar {
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    padding-inline: 50px;
     background-color:#F9F7C9;
     position:fixed;
     top:0;
