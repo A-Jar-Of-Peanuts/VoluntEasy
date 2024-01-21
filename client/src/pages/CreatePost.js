@@ -3,13 +3,14 @@ import NavigationBar from '../components/NavigationBar';
 import "./CreatePostCSS.css";
 import Select from 'react-select';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
+
 
 export default function CreatePost() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState(null);
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
+    const [latlng, setLatLng] = useState([]);
 
     const [year, setYear] = useState(0);
     const [month, setMonth] = useState(0);
@@ -20,6 +21,11 @@ export default function CreatePost() {
 
     const handleCreatePost = () => {
         var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
+        geocodeByAddress(location.label)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) =>
+                setLatLng({lat,lng})
+            )
     }
 
     return (
