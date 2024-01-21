@@ -1,4 +1,5 @@
 import {formatISO9075} from "date-fns";
+import "./PostCSS.css"
 
 export default function Post({title, location, description, image, eventTime}) {
     return (
@@ -6,8 +7,8 @@ export default function Post({title, location, description, image, eventTime}) {
             <img src={image} alt="postImg" />
             <div>
                 <h2>{title}</h2>
-                <h1>{location}</h1>
-                <h1> <time>{formatISO9075(eventTime)}</time> </h1>
+                <p>LOCATION: {location}</p>
+                <p>DATE & TIME <time>{formatISO9075(eventTime)}</time> </p>
             </div>
             <p className="description"> {description}</p>
         </div>

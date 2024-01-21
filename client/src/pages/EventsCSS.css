@@ -1,0 +1,16 @@
+.top {
+    padding: 80px;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.posts {
+    border: 5px solid;
+    padding: 10px;
+    overflow-y:scroll;
+}
+
+body {
+    background-color: #80BCBD;
+}
