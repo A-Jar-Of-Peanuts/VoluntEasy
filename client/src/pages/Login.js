@@ -49,7 +49,6 @@ function Login() {
 
   return (
     <div className='top'>
-      <div> <NavigationBar/> </div>
     <div className='loginAndRegister'>
     <form className = 'login' onSubmit={ login }>
       <div>
