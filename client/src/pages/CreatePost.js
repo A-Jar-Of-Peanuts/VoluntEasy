@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import "./CreatePostCSS.css";
 import Select from 'react-select';
-import { GoogleMap, useLoadScript, Marker} from '@react-google-maps/api';
-
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 export default function CreatePost() {
-
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
@@ -20,46 +18,8 @@ export default function CreatePost() {
     const [minute, setMinute] = useState(0);
     const [second, setSecond] = useState(0);
 
-    const [locations, setLocations] = useState([]);
-
-    const libraries = ['places'];
-
-    const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M',
-        libraries,
-      });
-    
-      if (loadError) {
-        return <div>Error loading maps</div>;
-      }
-    
-      if (!isLoaded) {
-        return <div>Loading maps</div>;
-      }
-
-    const googleSearch = (string) => {
-        // var sydney = new google.maps.LatLng(-33.867, 151.195);
-
-        // infowindow = new google.maps.InfoWindow();
-
-        // map = new google.maps.Map(
-        // document.getElementById('map'), {center: sydney, zoom: 15});
-
-        // var request = {
-        //     query: string,
-        //     fields: ['name', 'geometry'],
-        // };
-
-        // var service = new google.maps.places.PlacesService(map);
-
-        // service.findPlaceFromQuery(request, function(results, status) {
-        //       for (var i = 0; i < results.length; i++) {
-        //         setLocations(results[i]);
-        //       }
-        //   });
-    }
     const handleCreatePost = () => {
-
+        var concat = (year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second);
     }
 
     return (
@@ -122,13 +82,15 @@ export default function CreatePost() {
 
             <div>
                 <label>Location:</label>
-                <Select onChange={googleSearch} options={locations} />
+                <GooglePlacesAutocomplete
+      apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" onChange={(event)=>{setLocation(event.target.value)}}
+    />
 
             </div>
 
 
             
-            <button onClick={(event) => {setSecond(event.target.value)}}>Create Event!</button>
+            <button onClick={(event) => {handleCreatePost(event.target.value)}}>Create Event!</button>
         </div>
     )
 }
