@@ -1,7 +1,9 @@
 import { UserContext } from "../UserContext"
 import { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-
+import NavigationBar from '../components/NavigationBar'
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import "./PostPage.css"
 export default function PostPage() {
   const{id} = useParams();
   console.log(id);
@@ -19,11 +21,12 @@ export default function PostPage() {
   if(!postInfo) return '';
 
   return(
+    
     <div className='post-page'>
+            <NavigationBar />
       <h1>{postInfo.title}</h1>
       <h4>{postInfo.location}</h4>
-      <p>`Event time: ${postInfo.time}`</p>
-      <p>{postInfo.location}</p>
+      <p>`Event time: {postInfo.time}`</p>
     </div>
   ) 
 }
