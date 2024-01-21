@@ -2,19 +2,19 @@ import {formatISO9075} from "date-fns";
 import "./PostCSS.css"
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
-// AIzaSyAKM57OWoyZpf4reHYd8bVDdY9yj6Nwlm8
+export default function Post({title, location, description, eventTime, lat, lng}) {
 
-const libraries = ['places'];
-const mapContainerStyle = {
-  width: '100vw',
-  height: '100vh',
-};
-const center = {
-  lat: 7.2905715, // default latitude
-  lng: 80.6337262, // default longitude
-};
+    const libraries = ['places'];
 
-export default function Post({title, location, description, image, eventTime}) {
+    const mapContainerStyle = {
+        align: 'center',
+        width: '48vw',
+        height: '50vh',
+    };
+    const center = {
+        lat: Number(lat), // default latitude
+        lng: Number(lng), // default longitude
+    };
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyAKM57OWoyZpf4reHYd8bVDdY9yj6Nwlm8',
@@ -32,23 +32,21 @@ export default function Post({title, location, description, image, eventTime}) {
       
     return (
         <div className="Post">
-            <div>
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={10}
-        center={center}
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    </div>
-    
-            <img src={image} alt="postImg" />
+             <div>
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={10}
+                    center={center}>
+                    <Marker position={center} />
+                </GoogleMap>
+            </div>
             <div>
                 <h2>{title}</h2>
                 <p>LOCATION: {location}</p>
                 <p>DATE & TIME <time>{formatISO9075(eventTime)}</time> </p>
             </div>
             <p className="description"> {description}</p>
+            <button >JOIN EVENT</button>
         </div>
     )
 }
