@@ -7,19 +7,28 @@ export default function NavigationBar() {
     const p = () => {
         navigate("/profile");
     }
+
+    const h = () => {
+        navigate("/events");
+    }
+
+    const e = () => {
+        navigate("/host");
+    }
+
     return (
         <div className="NavigationBar">
             <div classname = "ic">
                 <h1>VOLUNTEASY</h1>
             </div>
             <div  classname = "ic">
-                <button>Home</button>
+                <button onClick={h}>Events</button>
             </div>
             <div  classname = "ic">
                 <button onClick={p}>My Profile</button>
             </div>
             <div  classname = "ic">
-                <button>Host Event</button>
+                <button onClick={e}>Host Event</button>
             </div>
         </div>
     ) 

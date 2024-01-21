@@ -1,9 +1,33 @@
 
 .background {
+    padding: 80px;
+    margin: auto;
     text-align: center;
-    background-color: #D5F0C1;
+    width: 50%;
+}
+
+.posts {
+    border: 5px solid;
+    padding: 10px;
+}
+
+body {
+    background-color: #80BCBD;
+}
+.post {
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.HJ {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
-    
-    /* other styles */
+    gap: 10%;
+    padding: 20px;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
 }

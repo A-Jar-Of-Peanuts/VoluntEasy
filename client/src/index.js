@@ -8,6 +8,7 @@ import { UserContextProvider } from './UserContext';
 import Login from './pages/Login'
 import Events from './pages/Events'
 import Profile from './pages/Profile'
+import CreatePost from './pages/CreatePost'
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,6 +19,7 @@ root.render(
         <Route path='/' element={<Login />} />
         <Route path='/events' element={<Events />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/host' element={<CreatePost />} />
       </Routes>
     </BrowserRouter>
   </UserContextProvider>
