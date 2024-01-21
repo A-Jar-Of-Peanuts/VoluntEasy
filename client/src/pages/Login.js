@@ -42,10 +42,7 @@ function Login() {
     });
     
     if(response.status === 200) {
-      alert("Registration successful.");
-      
-      document.getElementById("registerUsername").value="";
-      document.getElementById("registerPassword").value="";
+      alert("Registration successful."); 
     }
     else 
       alert("Registration failed.");
