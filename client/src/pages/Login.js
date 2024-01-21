@@ -41,8 +41,12 @@ function Login() {
       headers: {'Content-Type': 'application/json'},
     });
     
-    if(response.status === 200)
+    if(response.status === 200) {
       alert("Registration successful.");
+      
+      document.getElementById("registerUsername").value="";
+      document.getElementById("registerPassword").value="";
+    }
     else 
       alert("Registration failed.");
   }
