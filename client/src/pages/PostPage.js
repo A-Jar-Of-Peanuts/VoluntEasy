@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import NavigationBar from '../components/NavigationBar'
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import "./PostPage.css"
+import HJPost from "../components/HJPost"
+import Post from "../components/Post"
 export default function PostPage() {
   const{id} = useParams();
   console.log(id);
@@ -24,9 +26,7 @@ export default function PostPage() {
     
     <div className='post-page'>
             <NavigationBar />
-      <h1>{postInfo.title}</h1>
-      <h4>{postInfo.location}</h4>
-      <p>`Event time: {postInfo.time}`</p>
+            <Post title = {postInfo.title} location = {postInfo.location} description = {postInfo.description} eventTime = {postInfo.time}/>
     </div>
   ) 
 }
