@@ -4,3 +4,13 @@
     text-align: center;
     width: 50%;
 }
+
+.entry {
+    padding: 20px;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap:7px;
+}

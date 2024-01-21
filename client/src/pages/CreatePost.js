@@ -76,8 +76,11 @@ export default function CreatePost() {
             </div>
             <h2>Create Volunteering Posting</h2>
             <p>Be the change you want to see in your community!</p>
+
+            <div className="entry">
             <div>
                 <label>Title:</label>
+                <br></br>
                 <input 
                     type="text" 
                     placeholder='Change starts here' 
@@ -93,6 +96,7 @@ export default function CreatePost() {
 
             <div>
                 Date:
+                <br></br>
                 <input 
                     type="number" 
                     placeholder='YYYY' 
@@ -110,6 +114,7 @@ export default function CreatePost() {
             </div>
             <div>
                 Time:
+                <br></br>
             <input 
                     type="number" 
                     placeholder='HH' 
@@ -129,6 +134,7 @@ export default function CreatePost() {
 
             <div>
                 <label>Location:</label>
+                <br></br>
                 <GooglePlacesAutocomplete
                 apiKey="AIzaSyDn1tR2MkjZwAMsXzBH06QDlON52aWej9M" 
                 selectProps={{
@@ -142,6 +148,8 @@ export default function CreatePost() {
 
             
             <button>Create Event!</button>
+            </div>
+
         </div>
       </form>
     )
