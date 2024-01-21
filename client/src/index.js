@@ -12,13 +12,15 @@ import Profile from './pages/Profile'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter basename={"/"}>
-    <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/events' element={<Events />} />
-      <Route path='/profile' element={<Profile />} />
-    </Routes>
-  </BrowserRouter>
+  <UserContextProvider>
+    <BrowserRouter basename={"/"}>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/events' element={<Events />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
+  </UserContextProvider>
   
 );
 
